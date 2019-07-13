@@ -54,21 +54,23 @@ uppercase no
 default_color 333333
 color0 ff3333
 color1 818181
-
+color2 6798E6
+color3 FA7116
+color4 FD5225
 
 own_window_argb_visual no
 own_window_colour 000000
 own_window_argb_value 0
 TEXT
-${font Roboto:bold:size=10}${color0}SYSTEM INFO${color1}  ${hr 2}
-${font Roboto:bold:size=8}${goto 95}${color1}$sysname $kernel $alignr $machine
-##${font Roboto:bold:size=8}${goto 95}${color1}CPU${alignr 0}${color1}Intel i5-2430M ${freq_g cpu0}Ghz
-${font Roboto:bold:size=8}${goto 95}${color1}CPU${alignr 0}${color1}${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 1-26} ${freq_g cpu0}Ghz
-${font Roboto:bold:size=8}${goto 95}${color1}RAM ${goto 220}$mem / $memmax $alignr $memperc%
+${font Roboto:bold:size=10}${color2}SYSTEM INFO  $color0${hr 2}$alignr ${color3}  ${hr 2}
+${font Roboto:bold:size=8}${goto 95}${color0}$sysname $kernel $alignr$color3 $machine
+##${font Roboto:bold:size=8}${goto 95}${color2}CPU${alignr 0}${color3}Intel i5-2430M ${freq_g cpu0}Ghz
+${font Roboto:bold:size=8}${goto 95}${color0}CPU${alignr 0}${color4}${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 1-26}$color3 ${freq_g cpu0}Ghz
+${font Roboto:bold:size=8}${goto 95}${color0}RAM ${goto 220}$color4$mem / $memmax $alignr$color3 $memperc%
 ${goto 95}$membar
-${font Roboto:bold:size=8}${goto 95}${color1}Battery $alignr ${battery_percent}%
+${font Roboto:bold:size=8}${goto 95}${color0}Battery ${goto 220}$color4 $battery_time $alignr$color3 ${battery_percent}%
 ${goto 95} $battery_bar
-${font Roboto:bold:size=8}${goto 95}${color1}Uptime ${alignr 0}${color1}${uptime_short}
+${font Roboto:bold:size=8}${goto 95}${color0}Uptime ${alignr 0}${color3}${uptime_short}
 ${font Roboto:bold:size=10}${color0}HDD${color1}  ${hr 2}
 ##${font Roboto:bold:size=8}${goto 95}${color1}/root ${goto 220}${fs_used /home} / ${fs_size /home} $alignr ${fs_free_perc /home}%
 ${font Roboto:bold:size=8}${goto 95}${color1}/root ${goto 220}${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
